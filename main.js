@@ -1,26 +1,48 @@
-// const app = {​​​​
+const constraints={
+    username: {
+         presence : true,
 
-//     data() {​​​​
+    },
+    email: {
+         presence : true,
+         email:true
+    },
+    password: {
+         presence : true,
+    },
+    fullname: {
+         presence : true,
+    },
+    title: {
+         presence : true,
+    },
+    gender: {
+         presence : true,
+    },
+    language: {
+         presence : true,
+    },
+    exclusion: {
+      within: {admin:"admin"},
+      message: "^Cannot register with %{value} for username, sorry"
+    }
 
-//         return {​​​​
-
-//             msg: 'Hello, Vue3'
-
-//         }​​​​
-
-//     }​​​​
-
-
-
-// }​​​​
-
-// Vue.createApp(app).mount('#app')
+}
 const app ={
 
     data(){
 
         return {
-            msg: 'Hello,Vue3'
+            username : null,
+            email : null,
+            password : null,
+            fullname : null,
+            title : null,
+            gender : null,
+            language_lists : [{id:1,name:'Thai'},
+                   {id:2,name:'English'},
+                  {id:3,name:'Chinese'}
+            ],
         }
     }
 } 
