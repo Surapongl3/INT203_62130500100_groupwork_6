@@ -19,55 +19,91 @@
   <title>Basic Vue Js - HelloWorld App</title>
 </head>
 
-<body>
-  <div id="app">
-    <form @submit.prevent="checkForm">
-      <div class="grid grid-cols-1 ">
-        <div class="flex space-x-5 ">
-          <label for="username">User Name</label>
-          <input type="text" id="username" v-model="username" name="username">
-        </div>
-        <div class="flex space-x-5 ">
-          <label for="email">Email</label>
-          <input type="text" id="email" v-model="email"name="email">
-        </div>
-        <div class="flex space-x-5 ">
-          <label for="password">Password</label>
-          <input type="text" id="password" v-model="password"name="password">
-        </div>
-        <div class="flex space-x-5 ">
-          <label for="fullname">Full name</label>
-          <input type="text" id="fullname" v-model="fullname"name="fullname">
-        </div>
-        <div class="flex space-x-5 ">
-          <label for="title">Title</label>
-          <input type="text" id="titile" v-model="title"name="title">
-        </div>
-      
-        <div class="flex space-x-5 ">
-          <label for="gender">Gender</label>
-          <input type="text" id="gender" v-model="gender"name="gender">
-        </div>
-        <div class="flex space-x-5 ">
-          <label for="language"> Language</label>
-          <select id="language" v-model="language" name="language">
-            <option v-for="lang in language_lists" :value="lang.id">
-              {{lang.name}}
-            </option>
-          </select>
-        </div>
-        
-        <div class="flex space-x-5 ">
-          <input type="submit" value="Submit" class="px-8 py-2 text-white bg-yellow-500 rounded-lg hover:bg-red-600 focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2">
+<body class="h-full bg-gray-300">
+  <div id="app" >
+   
+      <div class="container flex justify-center py-5">
+        <div class="p-3 bg-green-200 rounded-xl max-w-lg hover:shadow">
+          <div class="flex justify-between "> <img v-bind:src="pathimage" width="150" class="rounded-lg">
+            <div class="ml-2">
+              <div class="p-3">
+                <h3 class="text-2xl">{{firstname}} {{lastname}} </h3> <span>{{position}}</span>
+              </div>
+              <div class="flex justify-between items-center p-3 bg-gray-200 rounded-lg">
+                <div class="mr-3"> <span class="text-gray-400 block">Article</span> <span
+                    class="font-bold text-black text-xl">34</span> </div>
+                <div class="mr-3"> <span class="text-gray-400 block">Followers</span> <span
+                    class="font-bold text-black text-xl">940</span> </div>
+                <div> <span class="text-gray-400 block">Ratings</span> <span
+                    class="font-bold text-black text-xl">8.9</span> </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex justify-between items-center mt-2 gap-2"> <button
+              class="w-full h-12 rounded-md border-2 text-md hover:shadow hover:bg-red-700 hover:border-red-700 hover:text-white ">Chat</button>
+            <button
+              class="w-full h-12 rounded-md bg-blue-700 text-white text-md hover:shadow hover:bg-blue-800">Chat</button>
+          </div>
         </div>
       </div>
-    </form>
-  </div>
+      <form @submit.prevent="errorCheck">
+        <div class="grid grid-cols-1  ml-96  pl-52 ">
+
+          <div class=" space-x-5 " >
+            <label for="username">User Name</label>
+            <input type="text" id="username" v-model="formdata.username" name="username">
+            <display-error :errors="errors" field="username"></display-error>
+          </div>
+          <div class=" space-x-5 mt-5">
+            <label for="email">Email</label>
+            <input type="text" id="email" v-model="formdata.email" name="email">
+            <display-error :errors="errors" field="email"></display-error>
+          </div>
+          <div class=" space-x-5  mt-5">
+            <label for="password">Password</label>
+            <input type="text" id="password" v-model="formdata.password" name="password">
+            <display-error :errors="errors" field="password"></display-error>
+          </div>
+          <div class=" space-x-5  mt-5">
+            <label for="fullname">Full name</label>
+            <input type="text" id="fullname" v-model="formdata.fullname" name="fullname">
+            <display-error :errors="errors" field="fullname"></display-error>
+          </div>
+          <div class=" space-x-5  mt-5">
+            <label for="title">Title</label>
+            <input type="text" id="titil" v-model="formdata.title" name="title">
+            <display-error :errors="errors" field="title"></display-error>
+          </div>
+
+          <div class=" space-x-5  mt-5">
+            <label for="gender">Gender</label>
+            <input type="text" id="gender" v-model="formdata.gender" name="gender">
+            <display-error :errors="errors" field="gender"></display-error>
+          </div>
+          <div class=" space-x-5  mt-5">
+            <label for="language"> Language</label>
+            <select id="language" v-model="formdata.language" name="language">
+              <option v-for="lang in language_lists" :value="lang.id">
+                {{lang.name}}
+              </option>
+            </select>
+            <display-error :errors="errors" field="language"></display-error>
+          </div>
+       
+        <div class="flex space-x-5 mt-5">
+          <input type="submit" value="Submit"
+            class="px-8 py-2 text-white bg-yellow-500 rounded-lg hover:bg-red-600 focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2">
+
+        </div> 
+      </div>
+      </form>
 
 
 
-  <!-- my main.js -->
-  <script src="./main.js">   </script>
+
+    <!-- my main.js -->
+    <script src="./main.js"> </script>
+
 </body>
 
 </html>
